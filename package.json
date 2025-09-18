@@ -1,0 +1,30 @@
+{
+  "name": "capability-assessment-website",
+  "version": "1.0.0",
+  "description": "A modern IT capability assessment tool for VMware Cloud Foundation",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server . -p 3000 -o",
+    "dev": "npx http-server . -p 3000 -o --cors",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "gh-pages -d ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/capability-assessment-website.git"
+  },
+  "keywords": [
+    "assessment",
+    "vmware",
+    "cloud",
+    "infrastructure",
+    "capability",
+    "maturity"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "gh-pages": "^6.0.0"
+  }
+}

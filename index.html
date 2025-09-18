@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern IT capability assessment tool for VMware Cloud Foundation readiness evaluation">
+    <meta name="keywords" content="IT assessment, VMware, cloud infrastructure, capability maturity">
+    <title>IT Capability Assessment Tool</title>
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-chart-line"></i>
+                    <span>CapabilityAssess</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#assessments" class="nav-link">Assessments</a></li>
+                    <li><a href="#results" class="nav-link">Results</a></li>
+                    <li><a href="#resources" class="nav-link">Resources</a></li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Assess Your IT Infrastructure
+                        <span class="gradient-text">Capabilities</span>
+                    </h1>
+                    <p class="hero-description">
+                        Evaluate your organization's readiness for modern cloud infrastructure with our comprehensive assessment tool. 
+                        Get strategic insights and actionable recommendations for VMware Cloud Foundation adoption.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="startAssessment()">
+                            <i class="fas fa-play"></i>
+                            Start Assessment
+                        </button>
+                        <button class="btn btn-secondary" onclick="viewDemo()">
+                            <i class="fas fa-eye"></i>
+                            View Demo
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="assessment-preview">
+                        <div class="preview-card">
+                            <h3>Infrastructure</h3>
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                    <circle cx="40" cy="40" r="35" style="stroke-dasharray: 220; stroke-dashoffset: 88;"></circle>
+                                </svg>
+                                <span>60%</span>
+                            </div>
+                        </div>
+                        <div class="preview-card">
+                            <h3>Operations</h3>
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                    <circle cx="40" cy="40" r="35" style="stroke-dasharray: 220; stroke-dashoffset: 132;"></circle>
+                                </svg>
+                                <span>40%</span>
+                            </div>
+                        </div>
+                        <div class="preview-card">
+                            <h3>Strategy</h3>
+                            <div class="progress-ring">
+                                <svg>
+                                    <circle cx="40" cy="40" r="35"></circle>
+                                    <circle cx="40" cy="40" r="35" style="stroke-dasharray: 220; stroke-dashoffset: 66;"></circle>
+                                </svg>
+                                <span>70%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assessment Types Section -->
+        <section id="assessments" class="assessments">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Choose Your Assessment</h2>
+                    <p>Select the type of assessment that best matches your evaluation needs</p>
+                </div>
+                
+                <div class="assessment-grid">
+                    <!-- Infrastructure Assessment -->
+                    <div class="assessment-card" data-assessment="infrastructure">
+                        <div class="card-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3>Infrastructure Capability</h3>
+                        <p>Evaluate your compute, storage, network, and security infrastructure maturity</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Compute & Storage Analysis</li>
+                            <li><i class="fas fa-check"></i> Network Architecture Review</li>
+                            <li><i class="fas fa-check"></i> Security & Compliance</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="selectAssessment('infrastructure')">
+                            Start Infrastructure Assessment
+                        </button>
+                    </div>
+
+                    <!-- Operations Assessment -->
+                    <div class="assessment-card" data-assessment="operations">
+                        <div class="card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Operations & Process</h3>
+                        <p>Assess your operational maturity and process efficiency</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Process Automation</li>
+                            <li><i class="fas fa-check"></i> Team Organization</li>
+                            <li><i class="fas fa-check"></i> Operational Excellence</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="selectAssessment('operations')">
+                            Start Operations Assessment
+                        </button>
+                    </div>
+
+                    <!-- Strategy Assessment -->
+                    <div class="assessment-card" data-assessment="strategy">
+                        <div class="card-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h3>Cloud & App Strategy</h3>
+                        <p>Evaluate your cloud strategy and application modernization approach</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Cloud Readiness</li>
+                            <li><i class="fas fa-check"></i> App Modernization</li>
+                            <li><i class="fas fa-check"></i> Strategic Alignment</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="selectAssessment('strategy')">
+                            Start Strategy Assessment
+                        </button>
+                    </div>
+
+                    <!-- Use Cases Assessment -->
+                    <div class="assessment-card" data-assessment="usecases">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Priority Use Cases</h3>
+                        <p>Identify and prioritize your key infrastructure use cases</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Business Priorities</li>
+                            <li><i class="fas fa-check"></i> Technical Requirements</li>
+                            <li><i class="fas fa-check"></i> Implementation Roadmap</li>
+                        </ul>
+                        <button class="btn btn-outline" onclick="selectAssessment('usecases')">
+                            Start Use Cases Assessment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Assessment Form Section -->
+        <section id="assessment-form" class="assessment-form hidden">
+            <div class="container">
+                <div class="form-header">
+                    <button class="btn-back" onclick="goBackToAssessments()">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Assessments
+                    </button>
+                    <div class="progress-indicator">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="progress-text">0% Complete</span>
+                    </div>
+                </div>
+
+                <div class="assessment-content">
+                    <div class="assessment-sidebar">
+                        <div class="assessment-info">
+                            <h3 id="current-assessment-title">Assessment Title</h3>
+                            <div class="info-panels" id="info-panels">
+                                <!-- Dynamic panels will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="assessment-main">
+                        <div class="category-tabs" id="category-tabs">
+                            <!-- Dynamic tabs will be inserted here -->
+                        </div>
+
+                        <div class="category-content" id="category-content">
+                            <!-- Dynamic content will be inserted here -->
+                        </div>
+
+                        <div class="form-actions">
+                            <button class="btn btn-secondary" onclick="previousCategory()" id="prev-btn" disabled>
+                                <i class="fas fa-chevron-left"></i>
+                                Previous
+                            </button>
+                            <button class="btn btn-primary" onclick="nextCategory()" id="next-btn">
+                                Next
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="btn btn-success hidden" onclick="completeAssessment()" id="complete-btn">
+                                <i class="fas fa-check"></i>
+                                Complete Assessment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="results hidden">
+            <div class="container">
+                <div class="results-header">
+                    <h2>Assessment Results</h2>
+                    <div class="results-actions">
+                        <button class="btn btn-secondary" onclick="exportResults()">
+                            <i class="fas fa-download"></i>
+                            Export PDF
+                        </button>
+                        <button class="btn btn-primary" onclick="shareResults()">
+                            <i class="fas fa-share"></i>
+                            Share Results
+                        </button>
+                    </div>
+                </div>
+
+                <div class="results-content">
+                    <div class="results-overview">
+                        <div class="score-cards" id="score-cards">
+                            <!-- Dynamic score cards will be inserted here -->
+                        </div>
+                        
+                        <div class="charts-container">
+                            <div class="chart-card">
+                                <h3>Overall Maturity</h3>
+                                <canvas id="overall-chart"></canvas>
+                            </div>
+                            <div class="chart-card">
+                                <h3>Category Breakdown</h3>
+                                <canvas id="category-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendations">
+                        <h3>Strategic Recommendations</h3>
+                        <div class="recommendation-cards" id="recommendation-cards">
+                            <!-- Dynamic recommendations will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="resources-section">
+                        <h3>Learning Resources</h3>
+                        <div class="resource-cards" id="resource-cards">
+                            <!-- Dynamic resource cards will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section id="resources" class="resources-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Additional Resources</h2>
+                    <p>Explore more content to enhance your understanding</p>
+                </div>
+
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Documentation</h3>
+                        <p>Comprehensive guides and best practices for VMware Cloud Foundation</p>
+                        <a href="#" class="resource-link">Explore Docs <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Video Library</h3>
+                        <p>Watch expert-led tutorials and deep-dive technical sessions</p>
+                        <a href="#" class="resource-link">Watch Videos <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community</h3>
+                        <p>Connect with other professionals and share experiences</p>
+                        <a href="#" class="resource-link">Join Community <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certification</h3>
+                        <p>Advance your career with VMware certifications</p>
+                        <a href="#" class="resource-link">Get Certified <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CapabilityAssess</h4>
+                    <p>Modern IT capability assessment tool for strategic decision making.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#assessments">Assessments</a></li>
+                        <li><a href="#results">Results</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@capabilityassess.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CapabilityAssess. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay hidden" id="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading assessment...</p>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
